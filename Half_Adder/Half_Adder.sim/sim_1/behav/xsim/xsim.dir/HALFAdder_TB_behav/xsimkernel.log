@@ -1,0 +1,7 @@
+Running: xsim.dir/HALFAdder_TB_behav/xsimk.exe -simmode gui -wdb HALFAdder_TB_behav.wdb -simrunnum 0 -socket 57268
+Design successfully loaded
+Design Loading Memory Usage: 7836 KB (Peak: 7836 KB)
+Design Loading CPU Usage: 30 ms
+Simulation completed
+Simulation Memory Usage: 8316 KB (Peak: 8316 KB)
+Simulation CPU Usage: 46 ms

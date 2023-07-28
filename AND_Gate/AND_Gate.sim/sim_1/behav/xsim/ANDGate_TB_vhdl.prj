@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../AND_Gate.srcs/sources_1/new/ANDGate.vhd" \
+"../../../../AND_Gate.srcs/sim_1/new/ANDGate_TB.vhd" \
+
+# Do not sort compile order
+nosort
