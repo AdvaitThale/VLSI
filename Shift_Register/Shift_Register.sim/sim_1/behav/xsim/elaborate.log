@@ -1,0 +1,16 @@
+Vivado Simulator v2023.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2023.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot Universal_ShiftReg_TB_behav xil_defaultlib.Universal_ShiftReg_TB -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-4940] 'shiftregister' remains a black box since it has no binding entity [C:/Users/advai/OneDrive/Documents/GitHub/VLSI/Shift_Register/Shift_Register.srcs/sim_1/new/Universal_ShiftReg_TB.vhd:52]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling architecture behavioral of entity xil_defaultlib.universal_shiftreg_tb
+Built simulation snapshot Universal_ShiftReg_TB_behav
