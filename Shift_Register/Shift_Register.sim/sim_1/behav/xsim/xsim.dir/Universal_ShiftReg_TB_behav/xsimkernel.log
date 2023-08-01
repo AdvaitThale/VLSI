@@ -2,3 +2,6 @@ Running: xsim.dir/Universal_ShiftReg_TB_behav/xsimk.exe -simmode gui -wdb Univer
 Design successfully loaded
 Design Loading Memory Usage: 7916 KB (Peak: 7916 KB)
 Design Loading CPU Usage: 46 ms
+Simulation completed
+Simulation Memory Usage: 8352 KB (Peak: 8352 KB)
+Simulation CPU Usage: 62 ms
