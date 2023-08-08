@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 30.07.2023 16:16:46
+-- Create Date: 07.08.2023 21:48:55
 -- Design Name: 
 -- Module Name: Universal_ShiftReg_TB - Behavioral
 -- Project Name: 
@@ -22,64 +22,66 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-
 entity Universal_ShiftReg_TB is
 end Universal_ShiftReg_TB;
 
 architecture Behavioral of Universal_ShiftReg_TB is
-    component shiftregister
-    port(
-         CLK : IN std_logic;
-         LeftIn : IN std_logic;
-         RightIn : IN std_logic;
-         RST : IN std_logic;
-         MODE : IN std_logic_vector (1 downto 0);
-         I : IN std_logic_vector (3 downto 0);
-         Q : OUT std_logic_vector (3 downto 0));
-         end component;
-         
-     --INPUTS
-     signal CLK : std_logic := '0';
-     signal LeftIn : std_logic := '0';
-     signal RightIn : std_logic := '0';
-     signal RST : std_logic := '0';
-     signal MODE : std_logic_vector(1 downto 0) := (others => '0');
-     signal I : std_logic_vector(3 downto 0) := (others => '0');
-     
-     --OUTPUTS
-     signal Q : std_logic_vector(3 downto 0);
+COMPONENT Universal_ShiftReg
+PORT(
+clk : IN std_logic;
+il : IN std_logic;
+ir : IN std_logic;
+mode : IN std_logic_vector(1 downto 0);
+q : OUT std_logic_vector(3 downto 0);
+i : IN std_logic_vector(3 downto 0);
+rst : IN std_logic
+);
+END COMPONENT;
+
+--Inputs
+signal clk : std_logic := '0';
+signal il : std_logic := '0';
+signal ir : std_logic := '0';
+signal mode : std_logic_vector(1 downto 0) := (others => '0');
+signal i : std_logic_vector(3 downto 0) := (others => '0');
+signal rst : std_logic := '0';
+--Outputs
+signal q : std_logic_vector(3 downto 0);
+constant clk_period : time := 10 ns;
+
+BEGIN
+uut: Universal_ShiftReg PORT MAP (
+clk => clk,
+il => il,
+ir => ir,
+mode => mode,
+q => q,
+i => i,
+rst => rst
+);
+
+process(clk, rst)
 begin
-    uut: shiftregister port map(
-    CLK => CLK,
-    LeftIn => LeftIn,
-    RightIn => RightIn,
-    RST => RST,
-    MODE => MODE,
-    I => I,
-    Q => Q);
-    
-process(CLK, RST)
-begin
-RST <= '1';
-RST <= '0' after 50ns;
-CLK <= not CLK after 10ns;
+rst <= '0';
+rst <= '1' after 70 ns;
+clk <= not clk after 20 ns;
 end process;
 
 process
-    begin
-        I <= "1010"; 
-        wait for 100ns;
-        MODE <= "00"; 
-        wait for 100ns;
-        MODE <= "01"; 
-        wait for 100ns;
-        MODE <="10";
-        wait for 100ns;
-        RightIn <= '1'; 
-        wait for 100ns;
-        MODE <="11"; 
-        wait for 100ns;
-        LeftIn <= '1';
-        wait for 100ns;
+begin
+i <= "1010";
+wait for 100 ns;
+mode <= "00";
+wait for 100 ns;
+mode <= "01";
+wait for 100 ns;
+mode <= "10";
+wait for 100 ns;
+ir <= '1';
+wait for 100 ns;
+mode <= "11";
+wait for 100 ns;
+il <= '1';
+wait for 100 ns;
 end process;
-end Behavioral;
+END;

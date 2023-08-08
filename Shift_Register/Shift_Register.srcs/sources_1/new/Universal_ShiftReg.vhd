@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 30.07.2023 12:15:45
+-- Create Date: 07.08.2023 21:46:54
 -- Design Name: 
 -- Module Name: Universal_ShiftReg - Behavioral
 -- Project Name: 
@@ -21,32 +21,34 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_arith.ALL;
-use IEEE.STD_LOGIC_unsigned.ALL;
 
 entity Universal_ShiftReg is
-  Port (CLK, LeftIn, RightIn, RST: IN std_logic;
-        MODE: IN std_logic_vector (1 downto 0);
-        I: IN std_logic_vector (3 downto 0);
-        Y: OUT std_logic_vector (3 downto 0));
+Port ( clk : in STD_LOGIC;
+il : in STD_LOGIC;
+ir : in STD_LOGIC;
+mode : in STD_LOGIC_VECTOR (1 downto 0);
+q : out STD_LOGIC_VECTOR (3 downto 0);
+i : in STD_LOGIC_VECTOR (3 downto 0);
+rst : in STD_LOGIC);
 end Universal_ShiftReg;
 
 architecture Behavioral of Universal_ShiftReg is
 begin
-process(CLK, RST)
-variable Y_TMP: std_logic_vector (3 downto 0);
-    begin
-    if RST = '1' then
-    Y_TMP := "0000";
-elsIF(CLK = '1' AND CLK' EVENT) then
-    case mode is    
-    when "00" => Y_TMP := Y_TMP;
-    when "01" => Y_TMP := I;
-    when "10" => Y_TMP := Y_TMP(2 downto 0) & RightIn; -- LEFT Shift
-    when "11" => Y_TMP := LeftIn & Y_TMP(3 downto 1); -- RIGHT Shift
-    when others => null;
-    end case;
-  end if;
-  Y <= Y_TMP;    
-end process;
-end behavioral;
+process(clk,rst)
+variable qtmp : std_logic_VECTOR(3 DOWNTO 0);
+begin
+if rst ='1' then
+qtmp:="0000";
+elsIF (clk = '1' AND clk' EVENT) THEN
+CASE mode IS
+WHEN "00" => qtmp := qtmp;
+WHEN "01" => qtmp := i;
+WHEN "10" => qtmp:=qtmp(2 DOWNTO 0) & ir; --Left Shift
+WHEN "11" => qtmp:=il & qtmp(3 DOWNTO 1); -- Right Shift
+WHEN OTHERS => NULL;
+END CASE;
+END IF;
+q <= qtmp;
+END PROCESS;
+END Behavioral;
+
