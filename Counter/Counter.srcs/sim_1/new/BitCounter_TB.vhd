@@ -1,17 +1,14 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
-
  
 ENTITY bitcounter_test IS
 END bitcounter_test;
  
 ARCHITECTURE behavior OF bitcounter_test IS 
- 
-    -- Component Declaration for the Unit Under Test (UUT)
- 
     COMPONENT bitcounter
     PORT(
-         clk, clr, dir, n, load : IN  std_logic;
+         clk : IN  std_logic;
+         clr : IN  std_logic;
          q : OUT  std_logic_vector(3 downto 0)
         );
     END COMPONENT;
@@ -20,9 +17,6 @@ ARCHITECTURE behavior OF bitcounter_test IS
    --Inputs
    signal clk : std_logic := '0';
    signal clr : std_logic := '0';
-   signal dir : std_logic := '0';
-   signal load : std_logic := '0';
-   signal n : std_logic := '0';
   -- signal reset: std_logic:='0';
  	--Outputs
    signal q : std_logic_vector(3 downto 0);
@@ -36,10 +30,7 @@ BEGIN
    uut: bitcounter PORT MAP (
           clk => clk,
           clr => clr,
-          dir => dir,
-          load => load,
-          q => q,
-          n => n
+          q => q
         );
 
    -- Clock process definitions
@@ -50,6 +41,7 @@ begin
      clk <= '1';
      wait for 10 ns;
 end process;
+
 
 
 -- Stimulus process
