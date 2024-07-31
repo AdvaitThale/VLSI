@@ -53,7 +53,7 @@ Y=>Y
 process(A,B)
 
 begin
-A <= not A after 112 ns;
-B <= not B after 1200 ns;
+A <= not A after 110 ns;
+B <= not B after 120 ns;
 end process;
 end;

@@ -5,6 +5,7 @@ ENTITY bitcounter_test IS
 END bitcounter_test;
  
 ARCHITECTURE behavior OF bitcounter_test IS 
+ 
     COMPONENT bitcounter
     PORT(
          clk : IN  std_logic;
@@ -55,3 +56,4 @@ begin
 end process;
 
 END;
+
